@@ -75,6 +75,12 @@
         eval(execString)
     }
   </script>
+  <script>
+    await pyodide.loadPackage("numpy") 
+    await pyodide.loadPackage("scipy")
+    await pyodide.loadPackage("matplotlib")
+    await pyodide.loadPackage("opencv-python")
+  </script>
   <script type="text/javascript" src="RepCounter.js"></script>
   
 </body>

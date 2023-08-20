@@ -49,13 +49,14 @@ function onResultsPose(results) {
     // console.log(`data: ${data}`);
     // console.log(`init_dir: ${init_dir}`);
     // console.log(`control: ${control}`);
-    console.log(`repCount: ${repCount}`);
+    //console.log(`repCount: ${repCount}`);
     
     document.body.classList.add('loaded');
     fpsControl.tick();
 
     canvasCtx5.save();
     canvasCtx5.clearRect(0, 0, out5.width, out5.height);
+
     canvasCtx5.drawImage(
         results.image, 0, 0, out5.width, out5.height);
     drawConnectors(
@@ -92,6 +93,10 @@ function onResultsPose(results) {
         Object.values(POSE_LANDMARKS_NEUTRAL)
             .map(index => results.poseLandmarks[index]),
         {color: zColor, fillColor: '#AAAAAA'});
+    
+    canvasCtx5.font = "20px Arial";
+    canvasCtx5.fillText(`RepCount: ${repCount}`, 10, 30);
+
     canvasCtx5.restore();
 }
 

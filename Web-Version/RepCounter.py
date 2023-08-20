@@ -279,14 +279,14 @@ def getRepCount(data, init_dir, g_max, g_min, control):
     if control:
         if(init_dir == "Increasing"):
             rep_idx = min_idx
-            print("Initially increasing")
+            #print("Initially increasing")
         elif(init_dir == "Decreasing"):
             rep_idx = max_idx
-            print("Initially decreasing")
+            #print("Initially decreasing")
 
         return len(rep_idx), init_dir, control
     
-    print(init_dir)
+    #print(init_dir)
     return 0, init_dir, control
 
 def resize(offset, data): #Needs to be created to avoid exceeding memory limit
