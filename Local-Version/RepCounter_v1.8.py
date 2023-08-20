@@ -392,7 +392,7 @@ g_min = 30
 
 o_fps = 5 #Dummy initialisation
 pdt = PoseDetector.poseDetector("V")
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(0) #Replace 0 with the video file name to run this script on the video file
 
 # Finding OpenCV version:
 (major_ver, minor_ver, subminor_ver) = (cv2.__version__).split('.')

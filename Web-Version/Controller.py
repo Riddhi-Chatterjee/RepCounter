@@ -3,7 +3,7 @@ from scipy.signal import savgol_filter, find_peaks, find_peaks_cwt
 visThreshold = 0.0
 
 essential_features = [
-                    "2, A, 13, 11, 23, d"
+                    "2, A, 23, 25, 27, d"
                     ]
 
 features = []
