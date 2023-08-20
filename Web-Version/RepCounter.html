@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+  <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.1/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.2/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.2/pose.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.16.1/full/pyodide.js"></script>
+</head>
+
+<body>
+
+    <!-- CONTENTS --> 
+  <div class="container" style="margin-top: 20px;">
+
+    <div class="columns">
+      
+      <!-- WEBCAM INPUT -->
+      <div class="column">
+        <article class="panel is-info">
+          <p class="panel-heading">
+            Webcam Input
+          </p>
+          <div class="panel-block">
+            <video class="input_video5"></video>
+          </div>
+        </article>
+      </div>
+
+      <!-- MEDIAPIPE OUTPUT -->
+      <div class="column">
+        <article class="panel is-info">
+          <p class="panel-heading">
+            Mediapipe Pose Detection
+          </p>
+          <div class="panel-block">
+            <canvas class="output5" width="480px" height="480px"></canvas>
+          </div>
+        </article>
+      </div>
+    </div>
+    
+    <div class="loading">
+      <div class="spinner"></div>
+    </div>
+    <div style="visibility: hidden;" class="control5">
+  </div>
+
+  <py-config>
+    packages = ["matplotlib", "pandas", "scipy", "opencv-python"]
+  </py-config>
+
+  <py-script>
+    from js import createObject
+    from pyodide.ffi import create_proxy
+
+    createObject(create_proxy(globals()), "pyodideGlobals")
+  </py-script>
+  <py-script src="FeatureTemplates.py"></py-script>
+  <py-script src="RepCounter.py"></py-script>
+  <py-script src="Controller.py"></py-script>
+
+  <script>
+    function createObject(object, variableName){
+        //Bind a variable whose name is the string variableName
+        // to the object called 'object'
+        let execString = variableName + " = object"
+        console.log("Running '" + execString + "'");
+        eval(execString)
+    }
+  </script>
+  <script type="text/javascript" src="RepCounter.js"></script>
+  
+</body>
+</html>
